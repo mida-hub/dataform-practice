@@ -1,0 +1,6 @@
+config {
+  type: "table",
+  schema: "stg_dwh"
+}
+
+SELECT 1 AS id

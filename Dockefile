@@ -1,0 +1,30 @@
+FROM --platform=linux/x86_64 node:20-bookworm-slim
+
+RUN apt-get update \
+  && apt-get dist-upgrade -y \
+  && apt-get install -y --no-install-recommends \
+    vim \
+    jq \
+  && apt-get clean \
+  && rm -rf \
+    /var/lib/apt/lists/* \
+    /tmp/* \
+    /var/tmp/*
+
+WORKDIR /usr/app/dataform
+
+RUN npm i -g snowflake-sdk@1.14.0 @dataform/cli@2.6.0
+
+COPY ./definitions /usr/app/dataform/definitions
+COPY ./includes /usr/app/dataform/includes
+COPY ./dataform.json /usr/app/dataform/dataform.json
+COPY ./package.json /usr/app/dataform/package.json
+COPY ./package-lock.json /usr/app/dataform/package-lock.json
+COPY ./node_modules /usr/app/dataform/node_modules
+
+COPY ./settings.json /root/.dataform/settings.json
+COPY ./.df-credentials.json /usr/app/dataform/.df-credentials.json
+
+RUN dataform install .
+
+ENTRYPOINT ["tail", "-f", "/dev/null"]
