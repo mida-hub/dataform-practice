@@ -5,20 +5,6 @@ Google Cloud Dataform の検証用リポジトリです
 2.6.0
 
 # ディレクトリ構成について
-## Dataform 関連ファイル
-- definitions
-- includes
-- dataform.json
-- .df-credentials.json
-- settings.json
-
-### definitions　配下の構成について
-- reporting: レポーティング用のデータセットを構築するためのスクリプトが格納されています
-- sources: 外部データソースの定義が格納されています
-- staging: ステージング用のデータセットを構築するためのスクリプトが格納されています
-
-## コンテナ関連ファイル
-- 上記以外はコンテナ関連のファイルです
 
 ```
 ├── definitions
@@ -35,6 +21,21 @@ Google Cloud Dataform の検証用リポジトリです
 ├── README.md
 └── settings.json
 ```
+
+## Dataform 関連ファイル
+- definitions
+- includes
+- dataform.json
+- .df-credentials.json
+- settings.json
+
+### definitions　配下の構成について
+- reporting: レポーティング用のデータセットを構築するためのスクリプトが格納されています
+- sources: 外部データソースの定義が格納されています
+- staging: ステージング用のデータセットを構築するためのスクリプトが格納されています
+
+## コンテナ関連ファイル
+- 上記以外はコンテナ関連のファイルです
 
 # Dataform の開発について
 ## 基本
