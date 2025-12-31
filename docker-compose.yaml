@@ -1,11 +1,11 @@
 services:
   dataform:
+    init: true
+    tty: true
     build:
       context: .
-      dockerfile: Dockefile
+      dockerfile: Dockerfile
     container_name: dataform
     volumes:
       - ./:/usr/app/dataform
-      - ~/.config/gcloud:/root/.config/gcloud:ro
-    tty: true
-    init: true
+      - ~/.config/gcloud:/root/.config/gcloud

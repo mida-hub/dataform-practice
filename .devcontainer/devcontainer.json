@@ -1,0 +1,16 @@
+{
+  "name": "Dataform Development with Copilot",
+  "dockerComposeFile": [
+    "../docker-compose.yaml"
+  ],
+  "service": "dataform",
+  "workspaceFolder": "/usr/app/dataform",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot-chat",
+        "ashishalex.dataform-lsp-vscode"
+      ]
+    }
+  }
+}

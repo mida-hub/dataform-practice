@@ -5,6 +5,14 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     vim \
     jq \
+    curl \
+    gnupg \
+    apt-transport-https \
+    ca-certificates \
+  && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
+  && echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+  && apt-get update \
+  && apt-get install -y google-cloud-cli \
   && apt-get clean \
   && rm -rf \
     /var/lib/apt/lists/* \
@@ -20,7 +28,6 @@ COPY ./includes /usr/app/dataform/includes
 COPY ./dataform.json /usr/app/dataform/dataform.json
 COPY ./package.json /usr/app/dataform/package.json
 COPY ./package-lock.json /usr/app/dataform/package-lock.json
-COPY ./node_modules /usr/app/dataform/node_modules
 
 COPY ./settings.json /root/.dataform/settings.json
 COPY ./.df-credentials.json /usr/app/dataform/.df-credentials.json
