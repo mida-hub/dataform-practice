@@ -1,0 +1,17 @@
+# --- 1. 大規模な依存関係（ノイズ削減） ---
+node_modules/
+package-lock.json
+
+# --- 2. 設定・認証情報（セキュリティ） ---
+settings.json
+.df-credentials.json
+.env
+
+# --- 3. コンテナ・ビルド関連（オプション） ---
+.devcontainer/
+Dockerfile
+docker-compose.yaml
+
+# --- 4. 一時ファイル・ログ ---
+*.log
+.DS_Store

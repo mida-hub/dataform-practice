@@ -13,5 +13,6 @@
         "usernamehw.errorlens"
       ]
     }
-  }
+  },
+  "postStartCommand": "gcloud config set project bigquery-practice-482713"
 }

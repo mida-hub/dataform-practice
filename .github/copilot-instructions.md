@@ -12,14 +12,9 @@ Google Cloud Dataform の検証用リポジトリです
 │   ├── sources
 │   └── staging
 ├── includes
-├── docker-compose.yaml
-├── Dockerfile
 ├── dataform.json
-├── node_modules
-├── package-lock.json
 ├── package.json
-├── README.md
-└── settings.json
+└── README.md
 ```
 
 ## Dataform 関連ファイル
@@ -91,3 +86,33 @@ Dataform では、他のテーブルを参照する場合に、ref 関数を利�
 ```
 select * from ${ref("staging_dataset", "staging_table")}
 ```
+
+
+# コーディングガイドライン
+
+## SQL スタイル
+- 複雑なロジックは CTE (WITH 句) を使用して段階的に記述してください。
+- SQL キーワード（select, from, where 等）は小文字で統一してください。
+- インデントはスペース2つを使用してください。
+
+## ドキュメント化と品質
+- 指示の中にメタデータが共有された場合は、`config` ブロックに、そのテーブルの役割を示す `description` を必ず記述してください。重要なカラムには、`columns: { column_name: "説明" }` を記述してください。
+- 一意性が保証されるべきカラムには `assertions: { uniqueKey: ["column_name"] }` を設定してください。
+
+## パフォーマンス
+- 抽出対象が巨大な場合は、`config` 内で BigQuery の `partitionBy` や `clusterBy` の設定を検討してください。書き方は以下の通りです。
+
+```
+config {
+  type: "table",
+  schema: "dataset",
+  name: "table",
+  bigquery: {
+    partitionBy: "DATE(column_name)",  // 日付型のカラムでパーティション分割
+    clusterBy: ["column1", "column2"]  // クラスタリングするカラム
+  }
+}
+```
+
+## includes の利用
+現状、includes は未使用のため利用しません。
