@@ -9,7 +9,8 @@
     "vscode": {
       "extensions": [
         "GitHub.copilot-chat",
-        "ashishalex.dataform-lsp-vscode"
+        "ashishalex.dataform-lsp-vscode",
+        "usernamehw.errorlens"
       ]
     }
   }
