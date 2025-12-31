@@ -80,6 +80,8 @@ config {
 }
 ```
 
+指示に応じて type: "table" を　view や incremental に変更してください。
+
 ## テーブルの参照について
 Dataform では、他のテーブルを参照する場合に、ref 関数を利用します。
 例えば、staging_dataset.staging_table を参照する場合は、以下のように記述します。
