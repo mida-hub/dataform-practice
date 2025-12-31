@@ -42,7 +42,7 @@ Google Cloud Dataform の検証用リポジトリです
 ### データソースを宣言する
 外部データをデータソースとして宣言するには、definitions/sources 配下に .sqlx ファイルを作成し、以下のように記述します。
 ファイル名は schema, name を利用して
-definitions/sources/<schema>/<name>.sqlx としてください。
+definitions/sources/\<schema\>/\<name\>.sqlx としてください。
 
 ```
 config {
@@ -55,7 +55,7 @@ config {
 ### ステージングテーブルを作成する
 データソースを利用して、クレンジングや型変換を行い、ステージングテーブルを作成するには、definitions/staging 配下に .sqlx ファイルを作成し、以下のように記述します。
 ファイル名は schema, name を利用して
-definitions/staging/<schema>/<name>.sqlx としてください。
+definitions/staging/\<schema\>/\<name\>.sqlx としてください。
 
 ```
 config {
@@ -70,7 +70,7 @@ config {
 ### レポーティング用テーブルを作成する
 ステージングテーブルを利用して、レポーティング用のテーブルを作成するには、definitions/reporting 配下に .sqlx ファイルを作成し、以下のように記述します。
 ファイル名は schema, name を利用して
-definitions/reporting/<schema>/<name>.sqlx としてください。
+definitions/reporting/\<schema\>/\<name\>.sqlx としてください。
 
 ```
 config {
@@ -84,7 +84,7 @@ config {
 Dataform では、他のテーブルを参照する場合に、ref 関数を利用します。
 例えば、staging_dataset.staging_table を参照する場合は、以下のように記述します。
 
-必ず、<schema>, <name> の順で指定してください。
+必ず、\<schema\>, \<name\> の順で指定してください。
 
 ```
 select * from ${ref("staging_dataset", "staging_table")}
