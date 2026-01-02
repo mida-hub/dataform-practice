@@ -5,6 +5,11 @@
   ],
   "service": "dataform",
   "workspaceFolder": "/usr/app/dataform",
+  "features": {
+    "ghcr.io/dhoeric/features/google-cloud-cli:1": {
+      "version": "latest"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -14,5 +19,8 @@
       ]
     }
   },
-  "postStartCommand": "gcloud config set project bigquery-practice-482713"
+  "remoteEnv": {
+    "CLOUDSDK_CORE_PROJECT": "bigquery-practice-482713",
+    "CLOUDSDK_AUTH_IMPERSONATE_SERVICE_ACCOUNT": "dataform-tools@bigquery-practice-482713.iam.gserviceaccount.com"
+  }
 }

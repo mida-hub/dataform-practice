@@ -9,3 +9,5 @@ services:
     volumes:
       - ./:/usr/app/dataform
       - ~/.config/gcloud:/root/.config/gcloud
+      # 除外設定
+      - /usr/app/dataform/node_modules

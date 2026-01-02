@@ -10,3 +10,6 @@ $ dataform init-creds bigquery
 $ docker compose up -d
 $ docker exec -it dataform bash
 ```
+
+## 権限
+https://qiita.com/yuji0809/items/16287ca0559dda3f6f7b
