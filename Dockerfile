@@ -15,21 +15,21 @@ RUN apt-get update \
 
 WORKDIR /usr/app/dataform
 
-# RUN npm i -g snowflake-sdk@1.14.0 @dataform/cli@2.6.0
 RUN npm i -g @dataform/cli@3.0.41
 RUN pip3 install sqlfluff==3.5.0 --break-system-packages
 
-COPY ./definitions /usr/app/dataform/definitions
-COPY ./includes /usr/app/dataform/includes
-# COPY ./dataform.json /usr/app/dataform/dataform.json
-COPY ./workflow_settings.yaml /user/app/dataform/workflow_settings.yaml
-# COPY ./package.json /usr/app/dataform/package.json
-# COPY ./package-lock.json /usr/app/dataform/package-lock.json
+# 設定ファイルのコピー先を node ユーザーのホームディレクトリに変更
+# 所有者を node:node に設定
+COPY --chown=node:node ./settings.json /home/node/.dataform/settings.json
+COPY --chown=node:node ./.df-credentials.json /usr/app/dataform/.df-credentials.json
 
+# プロジェクトファイルのコピー
+COPY --chown=node:node ./definitions /usr/app/dataform/definitions
+COPY --chown=node:node ./includes /usr/app/dataform/includes
+COPY --chown=node:node ./workflow_settings.yaml /usr/app/dataform/workflow_settings.yaml
+RUN mkdir -p /home/node/.config/gcloud && chown -R node:node /home/node/.config
 
-COPY ./settings.json /root/.dataform/settings.json
-COPY ./.df-credentials.json /usr/app/dataform/.df-credentials.json
-
-# RUN dataform install .
+# ユーザーを切り替え
+USER node
 
 ENTRYPOINT ["tail", "-f", "/dev/null"]

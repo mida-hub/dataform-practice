@@ -8,4 +8,7 @@ services:
     container_name: dataform
     volumes:
       - ./:/usr/app/dataform
-      - ~/.config/gcloud:/root/.config/gcloud
+      - ~/.config/gcloud:/home/node/.config/gcloud_host:ro
+
+volumes:
+  gcloud-config-tmp:

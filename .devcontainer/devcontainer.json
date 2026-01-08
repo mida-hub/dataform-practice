@@ -5,6 +5,7 @@
   ],
   "service": "dataform",
   "workspaceFolder": "/usr/app/dataform",
+  "remoteUser": "node",
   "features": {
     "ghcr.io/dhoeric/features/google-cloud-cli:1": {
       "version": "latest"
@@ -22,5 +23,6 @@
   "remoteEnv": {
     "CLOUDSDK_CORE_PROJECT": "bigquery-practice-482713",
     "CLOUDSDK_AUTH_IMPERSONATE_SERVICE_ACCOUNT": "dataform-tools@bigquery-practice-482713.iam.gserviceaccount.com"
-  }
+  },
+  "postStartCommand": "cp -r /home/node/.config/gcloud_host/* /home/node/.config/gcloud/ && gcloud auth application-default login --impersonate-service-account=$CLOUDSDK_AUTH_IMPERSONATE_SERVICE_ACCOUNT"
 }
