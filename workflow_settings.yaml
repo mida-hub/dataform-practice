@@ -1,0 +1,5 @@
+defaultAssertionDataset: dataform_assertions
+defaultProject: bigquery-practice-482713
+defaultLocation: US
+defaultDataset: dataform
+dataformCoreVersion: 3.0.41
