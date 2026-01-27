@@ -2,7 +2,7 @@
 Google Cloud Dataform の検証用リポジトリです
 
 # Dataform Core のバージョン
-2.6.0
+3.0.41
 
 # ディレクトリ構成について
 
